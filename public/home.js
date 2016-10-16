@@ -5,6 +5,7 @@
 	window.onload = function() {
 		initialize();
 		ID("search").onclick = search;
+		ID("profile").onclick = login;
 	};
 	
 	function initialize() {
@@ -17,19 +18,29 @@
 		    messagingSenderId: "521305151"
 		  };
 		  firebase.initializeApp(config);
+
+		// Load Username
+		var username = document.cookie;
+		if(username != null) {
+			ID("profile").innerhtml = username;
+		}
 	}
 
+	//test firebase code edit this----------------------------------------------!!!!!!!!!!!!!!!!!!!
 	function search() {
 		var value = ID("searchbar").value;
-		//alert(value);
 		console.log("value = " + value);
 		var database = firebase.database();
 		firebase.database().ref('users/' + 1).set({
 			name : value
 		});
 		console.log("finished writing value");
-		// your crap goes here
+	}
 
+	function login() {
+		if(document.cookie != null) {
+			href="profile.html";
+		}
 	}
 	
 	// returns an element of a given id
