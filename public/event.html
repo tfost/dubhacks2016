@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<script src="createEvent.js"> </script>
+		<script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+
 		<title>Create an Event</title>
 	</head>
 	<body>
 		<h1>Create Event</h1>
-		<form id="createEvent" action="" method="POST">
+		<form id="createEvent" onSubmit="createEvent()" method="POST">
 			<h2>Title</h2>
 			<input name="title"/>
 			<h2>Date</h2>
@@ -16,8 +19,9 @@
 			<input name="location"/>
 			<h2>Description</h2>
 			<input name="description"/>
+			<input type="submit" value="Create Event"/>
+
 		</form>
 		<br/>
-		<input type="submit" value="Create Event"/>
 	</body>
 </html>
