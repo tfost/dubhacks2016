@@ -71,7 +71,6 @@
 		var enteredUsername = ID("username").value;
 		var enteredPassword = ID("password").value;
 		if(isValid(enteredUsername, enteredPassword)) {
-			console.log("FRICKING UPDATING");
 			setCookie("username", enteredUsername);
 			updateUsername();
 		} else {
@@ -82,7 +81,6 @@
 	}
 
 	function isValid(username, password) {
-		console.log("FREICKING CALLED");
 		var ref = firebase.database().ref("/users");
 		return ref.once("value").then(function(snapshot) {
    				var users = snapshot.val()
