@@ -27,7 +27,10 @@
 
 	function updateUsername() {
 		var username = getCookie("username");
-		console.log(username + "gotten");
+		if(username == null || username == "") {
+			username = "Profile";
+		}
+		console.log(username + "dun dun dun");
 		ID("profile").innerHTML = username;
 	}
 
@@ -45,12 +48,13 @@
 	/*=============================================================================================*/
 
 	function viewprofile() {
-		if(document.cookie.value != null) {
-			//view profile
-			window.location = "viewProfile.html";
-		} else { //force login
+		var cookie = getCookie("username");
+		if(cookie == null || cookie =="") {
+			//force login
 			unhide("loginform");
 			hide("content");
+		} else {
+			window.location = "viewProfile.html";
 		}
 	}
 
@@ -63,7 +67,6 @@
 		var enteredPassword = ID("password").value;
 		if(isValid(enteredUsername, enteredPassword)) {
 			setCookie("username", enteredUsername);
-			console.log(enteredUsername);
 			updateUsername();
 		} else {
 			console.log("oops");
