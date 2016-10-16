@@ -42,7 +42,8 @@
 				event_time : time,
 				event_location : location,
 				event_description : desc,
-				event_tags : tagList
+				event_tags : tagList,
+				event_members : "" // todo: make host a member by default.
 			})
 		}
 		window.location = "index.html";
@@ -63,4 +64,24 @@
 	function ID(id) {
 		return document.getElementById(id);
 	}
+
+	function setCookie(cname, cvalue) {
+	    document.cookie = cname + "=" + cvalue;
+	}
+
+	//gets a cookie
+	function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
+}
 
