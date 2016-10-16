@@ -19,10 +19,11 @@
 	}
 
 	function createEvent() {
-		var data = ID("createEvent").data;
+		var title = ID("createEvent").title;
 		//alert(value);
+		
 		var database = firebase.database();
-		var title = data.elements["title"];
+		//var title = data.elements["title"];
 		console.log("title = " + title);
 
 		console.log("finished writing value");
