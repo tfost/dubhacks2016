@@ -30,11 +30,9 @@
 		var desc = ID("description").value;
 		var tagList = [];
 		var tags = ID("tagList").getElementsByClassName("tag");
-		console.log(tags);
 		for(var i = 0; i < tags.length; i++) {
 			tagList.push(tags[i].value);
 		}
-		console.log(tagList);
 		if (title == "" || date == "" || time == "" || location == "" || desc == "" || tagList.length < 1 || tagList == undefined) {
 			alert("Please make sure all fields are filled out!");
 		} else {
@@ -47,15 +45,6 @@
 				event_tags : tagList
 			})
 		}
-
-		console.log("EventTitle:" + title);
-		console.log("Event Date: " + date);
-		console.log("Event time: " + time);
-		console.log("Event Location:" + location);
-		console.log("Event Description: " + desc);
-		console.log("Event Tags: " + tagList);
-		console.log("finished writing value");
-
 	}
 
 	function addTag() {
