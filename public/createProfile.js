@@ -51,7 +51,7 @@
 				user_email : email
 			}, home);
 			console.log("Added new user: " + username);
-			setCookie("username", enteredUsername);
+			setCookie("username", username);
 			updateUsername();
 		}
 	}
