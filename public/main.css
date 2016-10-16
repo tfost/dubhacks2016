@@ -41,6 +41,10 @@ body {
 
 }
 
+#searchbox {
+	margin-top: 10px;
+}
+
 .box {
 
 	margin: auto;
