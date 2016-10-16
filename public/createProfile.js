@@ -26,7 +26,7 @@
 		var email = ID("email").value;
 		var fields = ID("createProfile").getElementsByTagName("h2");
 		console.log(fields);
-		fieldCheck(fields);
+		//fieldCheck(fields);
 		var database = firebase.database();
 		if (username == "" || name == "" || password == "" || password_confirmation == "" ||
 		 phone == "" || email == "") {
@@ -56,7 +56,7 @@
 		window.location = "index.html";
 	}
 	
-	function fieldCheck(fields) {
+	/*function fieldCheck(fields) {
 		for(var i = 0; i < fields.length(); i++) {
 			if(i == 0) {
 				if(/\s/.test(fields[i])) {
@@ -93,7 +93,7 @@
 				}
 			}
 		}
-	}
+	}*/
 
 	function errorGenerator(field, errorText) {
 		var errorMsg = document.createTextNode(errorText);
