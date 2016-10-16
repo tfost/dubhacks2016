@@ -26,10 +26,10 @@
 				console.log(events);
 				for (let activity in snapshot.val()) {
 					console.log("Event: " + activity);
-					for (var detail in activity) {
-						if (activity.hasOwnProperty(detail)) {
-    						console.log(detail + " -> " + activity[detail]);
- 						}
+					for (var detail in events[activity]) {
+						//if (activity.hasOwnProperty(detail)) {
+    						console.log(detail + " -> " + events[activity][detail]);
+ 						//}
 					}
 
 				}
