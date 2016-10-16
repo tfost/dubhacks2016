@@ -1,9 +1,13 @@
 	"use strict";
 
+	//var id = "tag1";
+	//var tagNumber = parseInt(id.charAt(id.length-1));
+
 	// instructions to load the page
 	window.onload = function() {
 		initialize();
-		ID("")
+		ID("create").onclick = hostAnEvent;
+		ID("add").onclick = addTag;
 	};
 	
 	function initialize() {
@@ -24,7 +28,12 @@
 		var time = ID("time").value;
 		var location = ID("location").value;
 		var desc = ID("description").value;
-		if (title == "" || date == "" || time == "" || location == "" || desc == "") {
+		var tagList = [];
+		var tags = ID("tagList").getElementsByClassName("tag");
+		for(var i = 0; i < tags.length; i++) {
+			tagList.push(tags[i].value);
+		}
+		if (title == "" || date == "" || time == "" || location == "" || desc == "" || tagList.length < 1 || tagList == undefined) {
 			alert("Please make sure all fields are filled out!");
 		} else {
 			var database = firebase.database();
@@ -32,20 +41,21 @@
 				event_date : date,
 				event_time : time,
 				event_location : location,
-				event_description : desc
+				event_description : desc,
+				event_tags : tagList
 			})
 		}
-		//alert(value);
-		
-		//var title = data.elements["title"];
+	}
 
-		console.log("EventTitle:" + title);
-		console.log("Event Date: " + date);
-		console.log("Event time: " + time);
-		console.log("Event Location:" + location);
-		console.log("Event Description: " + desc);
-		console.log("finished writing value");
-
+	function addTag() {
+		var tag = document.createElement("input");
+		//tagNumber++;
+		//tag.id = "tag" + tagNumber.toString();
+		tag.className = "tag";
+		tag.placeholder = "e.g. Music, Sports, etc.";
+		tag.size = "60";
+		ID("tagList").appendChild(tag);
+		ID("tagList").appendChild(document.createElement("br"));
 	}
 	
 	// returns an element of a given id
