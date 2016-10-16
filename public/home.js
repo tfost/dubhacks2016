@@ -8,6 +8,7 @@
 		ID("search").onclick = search;
 		ID("viewProfile").onclick = viewprofile;
 		ID("createAccount").onclick = createAccount;
+		ID("getStarted").onclick = createAccount;
 		ID("login").onclick = login;
 	};
 	
