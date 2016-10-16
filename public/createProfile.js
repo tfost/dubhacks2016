@@ -73,7 +73,7 @@
 					console.log("test");
 				}
 				specialCharCheck(fields[i]);
-			} else if(i == 3 {
+			} else if(i == 3) {
 				if(/[0-9]/.test(fields[i])) {
 					errorGenerator(fields[i], "No numbers in your name");
 					console.log("test");
