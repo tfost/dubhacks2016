@@ -49,10 +49,13 @@
 				user_password : password,
 				user_phone : phone,
 				user_email : email
-			}, home);
-			console.log("Added new user: " + username);
-			setCookie("username", username);
-			updateUsername();
+			}, function() {
+				setCookie("username", username);
+				console.log("Added new user: " + username);
+				home();
+			});
+			
+			
 		}
 	}
 
@@ -114,29 +117,3 @@
 	function setCookie(cname, cvalue) {
 	    document.cookie = cname + "=" + cvalue;
 	}
-
-	//gets a cookie
-	function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length,c.length);
-        }
-    }
-    return "";
-}
-
-function updateUsername() {
-		var username = getCookie("username");
-		if(username == null || username == "") {
-			username = "Profile";
-		}
-		console.log(username + "dun dun dun");
-		ID("profile").innerHTML = username;
-	}
-
