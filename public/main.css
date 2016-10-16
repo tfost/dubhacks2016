@@ -31,6 +31,19 @@ body {
 #title {
 	font-size: 16pt;
 	font-family: Anthony;
+} 
+
+p, h1, h2, h3, h4 {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#description {
+	background-color: #F8F8F8;
+
+}
+
+#small {
+	font-variant: small-caps;
 }
 
 #main {
@@ -76,6 +89,19 @@ body {
 	background-image: url(https://upload.wikimedia.org/wikipedia/commons/1/1b/Bradbury_Rink.JPG);
 	background-position: center;
 	background-size: cover;
+}
+
+h2 {
+	text-align: center;
+}
+
+h2.small {
+	font-weight: 500%;
+	margin-top: 0px;
+}
+
+header.jumbotron {
+	margin-bottom: 0px;
 }
 
 .jumbotron > .container {
