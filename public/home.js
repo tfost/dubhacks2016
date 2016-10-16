@@ -9,6 +9,7 @@
 		ID("viewProfile").onclick = viewprofile;
 		ID("createAccount").onclick = createAccount;
 		ID("login").onclick = login;
+		displayEvents();
 	};
 	
 	function initialize() {
@@ -77,6 +78,43 @@
 		});
 	}
 
+	function displayEvents() {
+		var ref = firebase.database().ref("/events");
+		ref.on("value", function(snapshot) {
+   				var events = snapshot.val()
+				console.log(events);
+				for (let activity in snapshot.val()) {
+					var activityDiv = document.createElement("div")
+					var title = document.createElement("h3");
+					title.appendChild(document.createTextNode(activity));
+					activityDiv.appendChild(title);
+					console.log("Event: " + activity + " ");
+					console.log("Time : " + events[activity]["event_time"]);
+					activityDiv.appendChild(document.createTextNode("Time: " + events[activity]["event_time"]));
+					activityDiv.appendChild(document.createElement("br"));
+					activityDiv.appendChild(document.createTextNode("Date: " + events[activity]["event_date"]));
+					activityDiv.appendChild(document.createElement("br"));
+					activityDiv.appendChild(document.createTextNode("Location: " + events[activity]["event_location"]));
+					activityDiv.appendChild(document.createElement("br"));
+					activityDiv.appendChild(document.createTextNode("About: " + events[activity]["event_description"]));
+					activityDiv.appendChild(document.createElement("br"));
+
+					var btn = document.createElement("BUTTON");
+					btn.onclick=function() {
+						console.log("Joining " + activity);
+						alert("You've joined the event " + activity);
+					}
+					btn.appendChild(document.createTextNode("Join Event!"));
+					activityDiv.appendChild(btn);
+
+					document.body.appendChild(activityDiv);
+
+				}
+
+			}, function (error) {
+				console.log("Error: " + error.code);
+		});
+	}
 // utilities=======================================================================================
 	// returns an element of a given id
 	function ID(id) {
