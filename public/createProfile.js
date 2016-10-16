@@ -25,6 +25,8 @@
 		var password_confirmation =  ID("confirmpassword").value;
 		var phone = ID("tel").value;
 		var email = ID("email").value;
+		var fields = ID("createProfile").getElementsByTagName("h2");
+		fieldCheck(fields);
 		var database = firebase.database();
 		if (username == "" || name == "" || password == "" || password_confirmation == "" ||
 		 phone == "" || email == "") {
@@ -51,10 +53,56 @@
 			console.log("Added new user: " + username);
 		}
 		//alert(value);
+		window.location = "index.html";
 		
 
 	}
 	
+	function fieldCheck(fields) {
+		for(var i = 0; i < fields.length(); i++) {
+			if(i == 0) {
+				if(/\s/.test(fields[i])) {
+					errorGenerator(fields[i], "No spaces in your username");
+				}
+				specialCharCheck(fields[i]);
+			} else if(i == 1) {
+				if(/[0-9]/.test(fields[i])) {
+					errorGenerator(fields[i], "No numbers in your name");
+				}
+				if(!/\s{1}/.test(fields[i])) {
+					errorGenerator(fields[i], "Too many spaces");
+				}
+				specialCharCheck(fields[i]);
+			} else if(i == 2 || i == 3) {
+				if(!/[a-zA-Z0-9]{1,}/.test(fields[i])) {
+					errorGenerator(fields[i], "Password must be more than 1 character");
+				}
+				specialCharCheck(fields[i]);
+			} else if(i == 4) {
+				if (!/^[0-9]{3}-?[0-9]{3}-?[0-9]{4}$/.test([fields[i]])) {
+					errorGenerator(fields[i], "Invalid phone number");
+				}
+				specialCharCheck(fields[i]);
+			} else {
+				if(/[@]{1}/.test(fields[i])) {
+					errorGenerator(fields[i], "Invalid email");
+				}
+			}
+		}
+	}
+
+	function errorGenerator(field, errorText) {
+		var errorMsg = document.createTextNode(errorText);
+		var error = document.createElement("p").appendChild(errorMsg);
+		ID(field).appendChild(error);
+	}
+
+	function specialCharCheck(field) {
+		if(/\W/.test(fields[i])) {
+			errorGenerator(field, "No special characters");
+		}
+	}
+
 	// returns an element of a given id
 	function ID(id) {
 		return document.getElementById(id);

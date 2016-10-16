@@ -27,7 +27,10 @@
 
 	function updateUsername() {
 		var username = getCookie("username");
-		console.log(username + "gotten");
+		if(username == null || username == "") {
+			username = "Profile";
+		}
+		console.log(username + "dun dun dun");
 		ID("profile").innerHTML = username;
 	}
 
@@ -45,12 +48,13 @@
 	/*=============================================================================================*/
 
 	function viewprofile() {
-		if(document.cookie.value != null) {
-			//view profile
-			window.location = "viewProfile.html";
-		} else { //force login
+		var cookie = getCookie("username");
+		if(cookie == null || cookie =="") {
+			//force login
 			unhide("loginform");
 			hide("content");
+		} else {
+			window.location = "viewProfile.html";
 		}
 	}
 
@@ -63,10 +67,10 @@
 		var enteredPassword = ID("password").value;
 		if(isValid(enteredUsername, enteredPassword)) {
 			setCookie("username", enteredUsername);
-			console.log(enteredUsername);
 			updateUsername();
 		} else {
-			console.log("oops");
+			setCookie("username", "");
+			console.log("INVALID");
 		}
 		
 	}
@@ -76,21 +80,17 @@
 		ref.on("value", function(snapshot) {
    				var users = snapshot.val()
 				console.log(users);
-				for (let activity in snapshot.val()) {
-					console.log("User: " + activity);
-					for (var detail in activity) {
-						if (activity.hasOwnProperty(detail)) {
-    						console.log(detail + " -> " + activity[detail]);
- 						}
+				for (var user in users) {
+					console.log("User: " + user["username"]);
+					if(user["username"] === username && user["password"] === password) {
+						return true;
 					}
-
 				}
 
 			}, function (error) {
 				console.log("Error: " + error.code);
 		});
-		console.log("valid");
-		return true;
+		return false;
 	}
 
 	function displayEvents() {
