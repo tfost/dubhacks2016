@@ -53,6 +53,7 @@
 			console.log("Added new user: " + username);
 		}
 		//alert(value);
+		window.location = "index.html";
 		
 
 	}

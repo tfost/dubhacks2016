@@ -8,6 +8,7 @@
 		ID("search").onclick = search;
 		ID("viewProfile").onclick = viewprofile;
 		ID("createAccount").onclick = createAccount;
+		ID("getStarted").onclick = createAccount;
 		ID("login").onclick = login;
 		displayEvents();
 	};
@@ -25,10 +26,12 @@
 	}
 
 	function updateUsername() {
-		var username = document.cookie.value;
-		if(username != null) {
-			ID("profile").innerhtml = username;
+		var username = getCookie("username");
+		if(username == null || username == "") {
+			username = "Profile";
 		}
+		console.log(username + "dun dun dun");
+		ID("profile").innerHTML = username;
 	}
 
 	//test firebase code edit this----------------------------------------------!!!!!!!!!!!!!!!!!!!
@@ -45,12 +48,13 @@
 	/*=============================================================================================*/
 
 	function viewprofile() {
-		if(document.cookie.value != null) {
-			//view profile
-			window.location = "viewProfile.html";
-		} else { //force login
+		var cookie = getCookie("username");
+		if(cookie == null || cookie =="") {
+			//force login
 			unhide("loginform");
 			hide("content");
+		} else {
+			window.location = "viewProfile.html";
 		}
 	}
 
@@ -59,23 +63,34 @@
 	}
 
 	function login() {
+		var enteredUsername = ID("username").value;
+		var enteredPassword = ID("password").value;
+		if(isValid(enteredUsername, enteredPassword)) {
+			setCookie("username", enteredUsername);
+			updateUsername();
+		} else {
+			setCookie("username", "");
+			console.log("INVALID");
+		}
+		
+	}
+
+	function isValid(username, password) {
 		var ref = firebase.database().ref("/users");
 		ref.on("value", function(snapshot) {
    				var users = snapshot.val()
 				console.log(users);
-				for (let activity in snapshot.val()) {
-					console.log("User: " + activity);
-					for (var detail in activity) {
-						if (activity.hasOwnProperty(detail)) {
-    						console.log(detail + " -> " + activity[detail]);
- 						}
+				for (var user in users) {
+					console.log("User: " + user["username"]);
+					if(user["username"] === username && user["password"] === password) {
+						return true;
 					}
-
 				}
 
 			}, function (error) {
 				console.log("Error: " + error.code);
 		});
+		return false;
 	}
 
 	function displayEvents() {
@@ -84,7 +99,7 @@
    				var events = snapshot.val()
 				console.log(events);
 				for (let activity in snapshot.val()) {
-					var activityDiv = document.createElement("div")
+					var activityDiv = document.createElement("container");
 					var title = document.createElement("h3");
 					title.appendChild(document.createTextNode(activity));
 					activityDiv.appendChild(title);
@@ -116,6 +131,27 @@
 		});
 	}
 // utilities=======================================================================================
+	//sets a cookie
+	function setCookie(cname, cvalue) {
+	    document.cookie = cname + "=" + cvalue;
+	}
+
+	//gets a cookie
+	function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
+}
+
 	// returns an element of a given id
 	function ID(id) {
 		return document.getElementById(id);
