@@ -1,8 +1,30 @@
-<!DOCTYPE hmtl>
+<!DOCTYPE html>
 <html>
 	<head>
-			<title>gonnabesomeassintheforecast</title>
+		<title>Create a User Profile</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<script src="createEvent.js"> </script>
+		<script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+		
 	</head>
 	<body>
+		<h1>Create Profile</h1>
+		<form id="createEvent" onSubmit="createEvent()">
+			<h2>Username</h2>
+			<input name="title" placeholder="Name of the event" size="60"/>
+			<h2>Password</h2>
+			<input name="title" placeholder="Name of the event" size="60"/>
+			<h2>Full Name</h2>
+			<input name="date" type="date" placeholder="When is the event?" size="60"/>
+			<h2>Phone Number</h2>
+			<input name="time" type="time" placeholder="What time is the event?" size="60"/>
+			<h2>Email</h2>
+			<input name="location" placeholder="Where's the event being held?" size="60"/>
+			<h2>Description</h2>
+			<textarea name="description" rows="10" cols="100" placeholder="What's the event about?"></textarea>
+			<input type="submit" value="Create Event"/>
+		</form>
+		<br/>
 	</body>
 </html>
