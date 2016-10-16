@@ -33,7 +33,7 @@
 		for(var i = 0; i < tags.length; i++) {
 			tagList.push(tags[i]);
 		}
-		if (title == "" || date == "" || time == "" || location == "" || desc == "") {
+		if (title == "" || date == "" || time == "" || location == "" || desc == "" || tags.length < 1 || tags == undefined) {
 			alert("Please make sure all fields are filled out!");
 		} else {
 			var database = firebase.database();
@@ -41,7 +41,8 @@
 				event_date : date,
 				event_time : time,
 				event_location : location,
-				event_description : desc
+				event_description : desc,
+				event_tags : tagList
 			})
 		}
 
