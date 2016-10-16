@@ -65,17 +65,17 @@
 					errorGenerator(fields[i], "No spaces in your username");
 				}
 				specialCharCheck(fields[i]);
-			} else if(i == 1) {
+			} else if(i == 1 || i == 2) {
+				if(!/[a-zA-Z0-9]{1,}/.test(fields[i])) {
+					errorGenerator(fields[i], "Password must be more than 1 character");
+				}
+				specialCharCheck(fields[i]);
+			} else if(i == 3 {
 				if(/[0-9]/.test(fields[i])) {
 					errorGenerator(fields[i], "No numbers in your name");
 				}
 				if(!/\s{1}/.test(fields[i])) {
 					errorGenerator(fields[i], "Too many spaces");
-				}
-				specialCharCheck(fields[i]);
-			} else if(i == 2 || i == 3) {
-				if(!/[a-zA-Z0-9]{1,}/.test(fields[i])) {
-					errorGenerator(fields[i], "Password must be more than 1 character");
 				}
 				specialCharCheck(fields[i]);
 			} else if(i == 4) {
