@@ -7,6 +7,7 @@
 		updateUsername();
 		ID("search").onclick = search;
 		ID("viewProfile").onclick = viewprofile;
+		ID("createEvent").onclick = makeEvent;
 		ID("createAccount").onclick = createAccount;
 		ID("getStarted").onclick = createAccount;
 		ID("login").onclick = login;
@@ -34,7 +35,7 @@
 		ID("profile").innerHTML = username;
 	}
 
-	//test firebase code edit this----------------------------------------------!!!!!!!!!!!!!!!!!!!
+	//test firebase code edit this--------THIS IS SO HORRIBLY WRONG-------------!!!!!!!!!!!!!!!!!!!
 	function search() {
 		var value = ID("searchbar").value;
 		console.log("value = " + value);
@@ -45,7 +46,7 @@
 		console.log("finished writing value");
 	}
 
-	/*=============================================================================================*/
+	/*============================^DISREGARD PLS^==================================================*/
 
 	function viewprofile() {
 		var cookie = getCookie("username");
@@ -60,6 +61,10 @@
 
 	function createAccount() {
 		window.location = "profile.html";
+	}
+
+	function makeEvent() {
+		window.location = "event.html";
 	}
 
 	function login() {
