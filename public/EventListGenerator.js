@@ -29,20 +29,22 @@
 					var title = document.createElement("h3");
 					title.appendChild(document.createTextNode(activity));
 					activityDiv.appendChild(title);
-					activityDiv.appendChild(document.createElement("br"));
-
 					console.log("Event: " + activity + " ");
 					console.log("Time : " + events[activity]["event_time"]);
 					activityDiv.appendChild(document.createTextNode("Time: " + events[activity]["event_time"]));
 					activityDiv.appendChild(document.createElement("br"));
 					activityDiv.appendChild(document.createTextNode("Date: " + events[activity]["event_date"]));
 					activityDiv.appendChild(document.createElement("br"));
-					activityDiv.appendChild(document.createTextNode("Time: " + events[activity]["event_location"]));
+					activityDiv.appendChild(document.createTextNode("Location: " + events[activity]["event_location"]));
 					activityDiv.appendChild(document.createElement("br"));
-					activityDiv.appendChild(document.createTextNode("Time: " + events[activity]["event_description"]));
+					activityDiv.appendChild(document.createTextNode("About: " + events[activity]["event_description"]));
 					activityDiv.appendChild(document.createElement("br"));
 
 					var btn = document.createElement("BUTTON");
+					btn.onclick=function() {
+						console.log("Joining " + activity);
+						alert("You've joined the event " + activity);
+					}
 					btn.appendChild(document.createTextNode("Join Event!"));
 					activityDiv.appendChild(btn);
 
@@ -55,7 +57,13 @@
 		});
 	}
 
+	// script for joining an activity.
+	// takes the master object storing all events, and the event you have chosen to join.
+	function joinEvent(events, activity) {
+		console.log(activity);
+		alert("You've joined the event!");
 
+	}
 	
 
 	// returns an element of a given id
