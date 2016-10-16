@@ -66,6 +66,7 @@
 		var enteredUsername = ID("username").value;
 		var enteredPassword = ID("password").value;
 		if(isValid(enteredUsername, enteredPassword)) {
+			console.log("FRICKING UPDATING");
 			setCookie("username", enteredUsername);
 			updateUsername();
 		} else {
@@ -76,21 +77,20 @@
 	}
 
 	function isValid(username, password) {
+		console.log("FREICKING CALLED");
 		var ref = firebase.database().ref("/users");
-		ref.on("value", function(snapshot) {
+		return ref.once("value").then(function(snapshot) {
    				var users = snapshot.val()
 				console.log(users);
 				for (var user in users) {
 					console.log("User: " + user["username"]);
-					if(user["username"] === username && user["password"] === password) {
+					if(user === username && users[user]["user_password"] === password) {
 						return true;
 					}
 				}
+				return false;
 
-			}, function (error) {
-				console.log("Error: " + error.code);
-		});
-		return false;
+			});
 	}
 
 	function displayEvents() {
