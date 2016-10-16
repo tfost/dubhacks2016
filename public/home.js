@@ -123,6 +123,18 @@
 					btn.onclick=function() {
 						console.log("Joining " + activity);
 						alert("You've joined the event " + activity);
+						var cookie = getCookie("username");
+						console.log("user joining event: " + cookie);
+						var members = activity["event_members"];
+						members += ", " + cookie;
+						firebase.database().ref("/events/" + activity).set({
+							event_date : events[activity]["event_date"],
+							event_time : events[activity]["event_time"],
+							event_location :  events[activity]["event_location"],
+							event_description :  events[activity]["event_description"],
+							event_tags :  events[activity]["event_tags"],
+							event_members : members });
+
 					}
 					btn.appendChild(document.createTextNode("Join Event!"));
 					activityDiv.appendChild(btn);
