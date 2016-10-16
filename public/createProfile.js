@@ -3,7 +3,6 @@
 	// instructions to load the page
 	window.onload = function() {
 		initialize();
-		ID("")
 	};
 	
 	function initialize() {
@@ -55,8 +54,6 @@
 		}
 		//alert(value);
 		window.location = "index.html";
-		
-
 	}
 	
 	function fieldCheck(fields) {
@@ -105,7 +102,7 @@
 	}
 
 	function specialCharCheck(field) {
-		if(/\W/.test(fields[i])) {
+		if(/\W/.test(fields){
 			errorGenerator(field, "No special characters");
 		}
 	}
