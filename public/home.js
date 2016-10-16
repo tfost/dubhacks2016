@@ -7,7 +7,6 @@
 		updateUsername();
 		ID("search").onclick = search;
 		ID("viewProfile").onclick = viewprofile;
-		//ID("login").onclick = login;
 	};
 	
 	function initialize() {
