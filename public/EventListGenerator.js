@@ -25,12 +25,28 @@
    				var events = snapshot.val()
 				console.log(events);
 				for (let activity in snapshot.val()) {
-					console.log("Event: " + activity);
-					for (var detail in events[activity]) {
-						//if (activity.hasOwnProperty(detail)) {
-    						console.log(detail + " -> " + events[activity][detail]);
- 						//}
-					}
+					var activityDiv = document.createElement("div")
+					var title = document.createElement("h3");
+					title.appendChild(document.createTextNode(activity));
+					activityDiv.appendChild(title);
+					activityDiv.appendChild(document.createElement("br"));
+
+					console.log("Event: " + activity + " ");
+					console.log("Time : " + events[activity]["event_time"]);
+					activityDiv.appendChild(document.createTextNode("Time: " + events[activity]["event_time"]));
+					activityDiv.appendChild(document.createElement("br"));
+					activityDiv.appendChild(document.createTextNode("Date: " + events[activity]["event_date"]));
+					activityDiv.appendChild(document.createElement("br"));
+					activityDiv.appendChild(document.createTextNode("Time: " + events[activity]["event_location"]));
+					activityDiv.appendChild(document.createElement("br"));
+					activityDiv.appendChild(document.createTextNode("Time: " + events[activity]["event_description"]));
+					activityDiv.appendChild(document.createElement("br"));
+
+					var btn = document.createElement("BUTTON");
+					btn.appendChild(document.createTextNode("Join Event!"));
+					activityDiv.appendChild(btn);
+
+					document.body.appendChild(activityDiv);
 
 				}
 
@@ -38,6 +54,8 @@
 				console.log("Error: " + error.code);
 		});
 	}
+
+
 	
 
 	// returns an element of a given id
