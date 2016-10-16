@@ -7,6 +7,7 @@
 		updateUsername();
 		ID("search").onclick = search;
 		ID("viewProfile").onclick = viewprofile;
+		ID("createEvent").onclick = makeEvent;
 		ID("createAccount").onclick = createAccount;
 		ID("getStarted").onclick = createAccount;
 		ID("login").onclick = login;
@@ -60,6 +61,10 @@
 
 	function createAccount() {
 		window.location = "profile.html";
+	}
+
+	function makeEvent() {
+		window.location = "event.html";
 	}
 
 	function login() {
