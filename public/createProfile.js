@@ -102,7 +102,7 @@
 	}
 
 	function specialCharCheck(field) {
-		if(/\W/.test(fields){
+		if(/\W/.test(fields)){
 			errorGenerator(field, "No special characters");
 		}
 	}
