@@ -26,10 +26,9 @@
 	}
 
 	function updateUsername() {
-		var username = document.cookie.value;
-		if(username != null) {
-			ID("profile").innerhtml = username;
-		}
+		var username = getCookie("username");
+		console.log(username + "gotten");
+		ID("profile").innerHTML = username;
 	}
 
 	//test firebase code edit this----------------------------------------------!!!!!!!!!!!!!!!!!!!
@@ -60,6 +59,19 @@
 	}
 
 	function login() {
+		var enteredUsername = ID("username").value;
+		var enteredPassword = ID("password").value;
+		if(isValid(enteredUsername, enteredPassword)) {
+			setCookie("username", enteredUsername);
+			console.log(enteredUsername);
+			updateUsername();
+		} else {
+			console.log("oops");
+		}
+		
+	}
+
+	function isValid(username, password) {
 		var ref = firebase.database().ref("/users");
 		ref.on("value", function(snapshot) {
    				var users = snapshot.val()
@@ -77,6 +89,8 @@
 			}, function (error) {
 				console.log("Error: " + error.code);
 		});
+		console.log("valid");
+		return true;
 	}
 
 	function displayEvents() {
@@ -85,7 +99,7 @@
    				var events = snapshot.val()
 				console.log(events);
 				for (let activity in snapshot.val()) {
-					var activityDiv = document.createElement("div")
+					var activityDiv = document.createElement("container");
 					var title = document.createElement("h3");
 					title.appendChild(document.createTextNode(activity));
 					activityDiv.appendChild(title);
@@ -117,6 +131,27 @@
 		});
 	}
 // utilities=======================================================================================
+	//sets a cookie
+	function setCookie(cname, cvalue) {
+	    document.cookie = cname + "=" + cvalue;
+	}
+
+	//gets a cookie
+	function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
+}
+
 	// returns an element of a given id
 	function ID(id) {
 		return document.getElementById(id);
