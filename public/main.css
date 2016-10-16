@@ -109,10 +109,9 @@ header.jumbotron {
 	color: #fff;
 }
 
-#content.container{
+#content.container, #loginform.container{
 	background: rgba(34, 34, 34, 0.35);
 	width: 100%;
-	text-align: center;
 }
 
 #events.container, #features.container {
@@ -120,7 +119,7 @@ header.jumbotron {
 	margin-right: 0;
 }
 
-.well {
+.well, #content.container {
 	text-align: center;
 }
 
