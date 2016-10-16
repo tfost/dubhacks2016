@@ -26,21 +26,22 @@
 		var phone = ID("tel").value;
 		var email = ID("email").value;
 		var database = firebase.database();
-		/*if (username == "" || name == "" || password == "" || password_confirmation == "" ||
+		if (username == "" || name == "" || password == "" || password_confirmation == "" ||
 		 phone == "" || email == "") {
 			alert("Please make sure all fields are filled out!");
-		} else*/ 
-		var exists;
+		} else
+		/*var exists;
 		database.ref('/users').once('value').then(function(snapshot) {
 			if (snapshot.hasChild(username)) {
+				console.log("snapshot key = " + snapshot.key);
 				alert("Data already exists!");
 			}
 		});
 		if (false){ // if username already exists, prevent rewriting.
 
-		} /*else if (password != password_confirmation) {
+		}else */ if (password != password_confirmation) {
 			alert("Your passwords do not match.");
-		} */else {
+		} else {
 			database.ref('users/' + username).set({
 				user_fullname : name,
 				user_password : password,
