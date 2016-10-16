@@ -1,7 +1,7 @@
 	"use strict";
 
-	var id = "tag1";
-	var tagNumber = parseInt(id.charAt(id.length-1));
+	//var id = "tag1";
+	//var tagNumber = parseInt(id.charAt(id.length-1));
 
 	// instructions to load the page
 	window.onload = function() {
@@ -28,6 +28,11 @@
 		var time = ID("time").value;
 		var location = ID("location").value;
 		var desc = ID("description").value;
+		var tagList = {}
+		var tags = ID("tagList").getElementsByClassName("tag");
+		for(var i = 0; i < tags.length; i++) {
+			tagList.push(tags[i]);
+		}
 		if (title == "" || date == "" || time == "" || location == "" || desc == "") {
 			alert("Please make sure all fields are filled out!");
 		} else {
@@ -51,9 +56,10 @@
 
 	function addTag() {
 		var tag = document.createElement("input");
-		tagNumber++;
-		tag.id = "tag" + tagNumber.toString();
-		tag.placeholder = ID("tag1").placeholder;
+		//tagNumber++;
+		//tag.id = "tag" + tagNumber.toString();
+		tag.class = "tag";
+		tag.placeholder = "e.g. Music, Sports, etc.";
 		tag.size = "60";
 		ID("tagList").appendChild(tag);
 		ID("tagList").appendChild(document.createElement("br"));
