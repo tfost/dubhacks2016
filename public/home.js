@@ -7,7 +7,7 @@
 		updateUsername();
 		ID("search").onclick = search;
 		ID("viewProfile").onclick = viewprofile;
-		ID("login").onclick = login;
+		//ID("login").onclick = login;
 	};
 	
 	function initialize() {
@@ -47,8 +47,7 @@
 			//view profile
 			window.location = "viewProfile.html";
 		} else { //force login
-			unhide("login");
-			login();
+			window.location = "login.html";
 		}
 	}
 
