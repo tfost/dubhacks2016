@@ -49,9 +49,12 @@
 					event_description : desc,
 					event_tags : tagList,
 					event_members : cookie// todo: make host a member by default.
-				})
+				}, home);
 			}
 		}
+	}
+
+	function home() {
 		window.location = "index.html";
 	}
 

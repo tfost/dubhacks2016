@@ -49,10 +49,13 @@
 				user_password : password,
 				user_phone : phone,
 				user_email : email
-			});
+			}, home);
 			console.log("Added new user: " + username);
 		}
 		//alert(value);
+	}
+
+	function home() {
 		window.location = "index.html";
 	}
 	
