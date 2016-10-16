@@ -2,22 +2,26 @@
 <html>
 	<head>
 		<title>Create an Event</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<script src="createEvent.js"> </script>
+		<script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
 	</head>
 	<body>
 		<h1>Create Event</h1>
-		<form id="createEvent" action="" method="POST">
+		<form id="createEvent" onSubmit="createEvent()">
 			<h2>Title</h2>
-			<input name="title"/>
+			<input name="title" placeholder="Name of the event" size="60"/>
 			<h2>Date</h2>
-			<input name="date" type="date" value="mm/dd/yyyy"/>
+			<input name="date" type="date" placeholder="When is the event?" size="60"/>
 			<h2>Time</h2>
-			<input name="time" type="time"/>
+			<input name="time" type="time" placeholder="What time is the event?" size="60"/>
 			<h2>Location</h2>
-			<input name="location"/>
+			<input name="location" placeholder="Where's the event being held?" size="60"/>
 			<h2>Description</h2>
-			<input name="description"/>
+			<textarea name="description" rows="10" cols="100" placeholder="What's the event about?"></textarea>
+			<input type="submit" value="Create Event"/>
 		</form>
 		<br/>
-		<input type="submit" value="Create Event"/>
 	</body>
 </html>
