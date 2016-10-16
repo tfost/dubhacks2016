@@ -69,7 +69,7 @@
 			setCookie("username", enteredUsername);
 			updateUsername();
 		} else {
-			console.log("oops");
+			console.log("INVALID");
 		}
 		
 	}
@@ -79,21 +79,17 @@
 		ref.on("value", function(snapshot) {
    				var users = snapshot.val()
 				console.log(users);
-				for (let activity in snapshot.val()) {
-					console.log("User: " + activity);
-					for (var detail in activity) {
-						if (activity.hasOwnProperty(detail)) {
-    						console.log(detail + " -> " + activity[detail]);
- 						}
+				for (var user in users) {
+					console.log("User: " + user["username"]);
+					if(user["username"] === username && user["password"] === password) {
+						return true;
 					}
-
 				}
 
 			}, function (error) {
 				console.log("Error: " + error.code);
 		});
-		console.log("valid");
-		return true;
+		return false;
 	}
 
 	function displayEvents() {
