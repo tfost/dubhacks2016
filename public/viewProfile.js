@@ -3,7 +3,7 @@
 	// instructions to load the page
 	window.onload = function() {
 		initialize();
-		ID("")
+		updateUsername();
 	};
 	
 	function initialize() {
@@ -17,6 +17,15 @@
 		  };
 		  firebase.initializeApp(config);
 		  displayEvents()
+	}
+
+	function updateUsername() {
+		var username = getCookie("username");
+		if(username == null || username == "") {
+			username = "Profile";
+		}
+		console.log(username + "dun dun dun");
+		ID("profile").innerHTML = username;
 	}
 
 	function displayEvents() {
@@ -64,6 +73,10 @@
 
 	}
 	
+	function logout() {
+		setCookie("username", "");
+		window.location = "index.html";
+	}
 
 	// returns an element of a given id
 	function ID(id) {

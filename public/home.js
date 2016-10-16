@@ -35,7 +35,7 @@
 		ID("profile").innerHTML = username;
 	}
 
-	//test firebase code edit this----------------------------------------------!!!!!!!!!!!!!!!!!!!
+	//test firebase code edit this--------THIS IS SO HORRIBLY WRONG-------------!!!!!!!!!!!!!!!!!!!
 	function search() {
 		var value = ID("searchbar").value;
 		console.log("value = " + value);
@@ -46,7 +46,7 @@
 		console.log("finished writing value");
 	}
 
-	/*=============================================================================================*/
+	/*============================^DISREGARD PLS^==================================================*/
 
 	function viewprofile() {
 		var cookie = getCookie("username");
