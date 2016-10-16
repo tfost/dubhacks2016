@@ -108,6 +108,13 @@ header.jumbotron {
 	color: #fff;
 }
 
+.well {
+	text-align: center;
+}
+
+#events h2{
+	text-align: left;
+}
 /*Color Pallets==================================================================================*/
 .cp-main {
 	background: #F8CA00;
