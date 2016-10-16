@@ -6,8 +6,8 @@
 		initialize();
 		updateUsername();
 		ID("search").onclick = search;
-		ID("profile").onclick = viewprofile;
-		ID("loginsubmit").onclick = login;
+		ID("viewProfile").onclick = viewprofile;
+		ID("login").onclick = login;
 	};
 	
 	function initialize() {
@@ -23,7 +23,7 @@
 	}
 
 	function updateUsername() {
-		var username = document.cookie;
+		var username = document.cookie.value;
 		if(username != null) {
 			ID("profile").innerhtml = username;
 		}
@@ -40,17 +40,36 @@
 		console.log("finished writing value");
 	}
 
+	/*=============================================================================================*/
+
 	function viewprofile() {
-		if(document.cookie != null) {
+		if(document.cookie.value != null) {
 			//view profile
-			window.location = "profile.html";
+			window.location = "viewProfile.html";
 		} else { //force login
-			ID("login").unhide();
+			unhide("login");
+			login();
 		}
 	}
 
-	function login () {
-		
+	function login() {
+		var ref = firebase.database().ref("/users");
+		ref.on("value", function(snapshot) {
+   				var users = snapshot.val()
+				console.log(users);
+				for (let activity in snapshot.val()) {
+					console.log("User: " + activity);
+					for (var detail in activity) {
+						if (activity.hasOwnProperty(detail)) {
+    						console.log(detail + " -> " + activity[detail]);
+ 						}
+					}
+
+				}
+
+			}, function (error) {
+				console.log("Error: " + error.code);
+		});
 	}
 
 // utilities=======================================================================================
