@@ -8,6 +8,12 @@
 		<script src="home.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
 		
+			<!--Bootstrap stylesheet CDN link from http://getbootstrap.com/getting-started/-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!--our stylesheet, in which we can override Bootstrap's styles where needed-->
+		<link rel="stylesheet" href="css/main.css">
+
 		<!--probably move this to it's own js file-->
 		<script>
 		  // Initialize Firebase
@@ -21,14 +27,10 @@
 		  firebase.initializeApp(config);
 		</script>
 	</head>
-	<body class="cp-body">
+	<!--<body class="cp-body">
 		<div id="topbar" class="menu cp-main">
 			<div id="home" class="block">
 				<span>Assemblr</span>
-			</div>
-			<div id="searchblock" class="block">
-				<input id="searchbar" type="text" hint="search" />
-				<input id="search" type="button" value="search"/>
 			</div>
 			<div id="create" class="block">
 				<span>Create Event</span>
@@ -36,7 +38,7 @@
 			<div id="profile" class="block">
 				<span>Profile</span>
 			</div>
-		</div>
+		</div>-->
 
 <!--start of the responsive navigation bar-->
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -68,19 +70,22 @@
                 </button>
                 <!--branding content, which always remains visible-->
                 <a class="navbar-brand" href="#">
-                    Dawg Coffee
+					Assemblr
                 </a>
             </div>
+
+			<div id="searchblock" class="block">
+				<input id="searchbar" type="text" hint="search" />
+				<input id="search" type="button" value="search"/>
+			</div>
 
             <!--navigation links, which are always visible on wide sceens,
             but go into a drop-down menu on narrow screens-->
             <div class="collapse navbar-collapse" id="site-nav-links">
                 <!--the `navbar-right` class makes the links right-aligned on desktop-->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#location">location</a></li>
-                    <li><a href="#menu">menu</a></li>
-                    <li><a href="#events">events</a></li>
-                    <li><a href="#order">order</a></li>
+                    <li><a href="#location">Create Profile</a></li>
+                    <li><a href="#menu">Profile</a></li>
                 </ul>
             </div>
         
