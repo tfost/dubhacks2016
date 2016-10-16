@@ -45,6 +45,7 @@
 				event_tags : tagList
 			})
 		}
+		window.location = "index.html";
 	}
 
 	function addTag() {
