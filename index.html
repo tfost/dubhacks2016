@@ -2,8 +2,9 @@
 <html>
 	<head>
 		<title>Assemblr</title>
-		<link href="index.css" type="text/css" rel="stylesheet" />
-		<script src="index.js"></script>
+		<meta name="viewport" content="width-device-width, initial scale=1.0">
+		<link href="main.css" type="text/css" rel="stylesheet" />
+		<script src="home.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
 		
 		<!--probably move this to it's own js file-->
@@ -19,6 +20,7 @@
 		  firebase.initializeApp(config);
 		</script>
 	</head>
+
 	<body class="cp-body">
 		<div id="topbar" class="menu cp-main">
 			<div id="home" class="block">
@@ -26,13 +28,13 @@
 			</div>
 			<div id="searchblock" class="block">
 				<input id="searchbar" type="text" hint="search" />
-				<input id="search" type="button" value="search"/>
+				<input id="search" type="button" value="search" />
 			</div>
 			<div id="create" class="block">
 				<span>Create Event</span>
 			</div>
 			<div id="profile" class="block">
-				<span>Profile</span>
+				<a href="profile.html">Profile</a>
 			</div>
 		</div>
 
