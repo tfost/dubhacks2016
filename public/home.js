@@ -69,6 +69,7 @@
 			setCookie("username", enteredUsername);
 			updateUsername();
 		} else {
+			setCookie("username", "");
 			console.log("INVALID");
 		}
 		
