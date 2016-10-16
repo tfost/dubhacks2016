@@ -72,6 +72,16 @@ body {
 	}
 }
 
+.jumbotron {
+	background-image: url(https://upload.wikimedia.org/wikipedia/commons/1/1b/Bradbury_Rink.JPG);
+	background-position: center;
+	background-size: cover;
+}
+
+.jumbotron > .container {
+	color: #fff;
+}
+
 /*Color Pallets==================================================================================*/
 .cp-main {
 	background: #F8CA00;
