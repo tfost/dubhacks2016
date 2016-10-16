@@ -7,6 +7,8 @@
 		updateUsername();
 		ID("search").onclick = search;
 		ID("viewProfile").onclick = viewprofile;
+		ID("createAccount").onclick = createAccount;
+		ID("login").onclick = login;
 	};
 	
 	function initialize() {
@@ -46,8 +48,13 @@
 			//view profile
 			window.location = "viewProfile.html";
 		} else { //force login
-			window.location = "login.html";
+			unhide(ID("loginform"));
+			hide(ID("content"));
 		}
+	}
+
+	function createAccount() {
+		window.location = "profile.html";
 	}
 
 	function login() {

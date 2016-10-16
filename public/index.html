@@ -71,7 +71,15 @@
         <!--V CONTENT V -->
 
         <header class="jumbotron">
-            <div class="container">
+            <div id="loginform" class="container" style="display: none">
+                <form>
+                    <input id="username" type="text" class="form-control" placeholder="username">
+                    <input id="password" type="text" class="form-control" placeholder="password">
+                    <button id="login" type="button">Login</button>
+                    <button id= "createAccount" type="button">Create new account</button>
+                </form>
+            </div>
+            <div id="content" class="container">
                 <h1>Assemblr</h1>
                 <p>Bringing People Together Since 2016</p>
                 <p><a class="btn btn-primary btn-lg" href="#" role="button">Get Started</a></p>
