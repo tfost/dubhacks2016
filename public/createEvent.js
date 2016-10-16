@@ -1,9 +1,13 @@
 	"use strict";
 
+	var id = "tag1";
+	var tagNumber = parseInt(id.charAt(id.length-1));
+
 	// instructions to load the page
 	window.onload = function() {
 		initialize();
-		ID("")
+		ID("create").onclick = hostAnEvent;
+		ID("add").onclick = addTag;
 	};
 	
 	function initialize() {
@@ -35,9 +39,6 @@
 				event_description : desc
 			})
 		}
-		//alert(value);
-		
-		//var title = data.elements["title"];
 
 		console.log("EventTitle:" + title);
 		console.log("Event Date: " + date);
@@ -46,6 +47,16 @@
 		console.log("Event Description: " + desc);
 		console.log("finished writing value");
 
+	}
+
+	function addTag() {
+		var tag = document.createElement("input");
+		tagNumber++;
+		tag.id = "tag" + tagNumber.toString();
+		tag.placeholder = ID("tag1").placeholder;
+		tag.size = "60";
+		ID("tagList").appendChild(tag);
+		ID("tagList").appendChild(document.createElement("br"));
 	}
 	
 	// returns an element of a given id
