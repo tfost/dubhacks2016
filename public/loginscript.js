@@ -4,10 +4,10 @@
 	// instructions to load the page
 	window.onload = function() {
 		initialize();
-		updateUsername();
+		updateusername();
 		ID("search").onclick = search;
-		ID("profile").onclick = viewprofile;
-		ID("loginsubmit").onclick = login;
+		ID("profile").onclick = login;
+		ID("username").onclick = attemptlogin;
 	};
 	
 	function initialize() {
@@ -20,9 +20,8 @@
 		    messagingSenderId: "521305151"
 		  };
 		  firebase.initializeApp(config);
-	}
 
-	function updateUsername() {
+		// Load Username
 		var username = document.cookie;
 		if(username != null) {
 			ID("profile").innerhtml = username;
@@ -40,33 +39,26 @@
 		console.log("finished writing value");
 	}
 
-	function viewprofile() {
+	function login() {
 		if(document.cookie != null) {
-			//view profile
 			window.location = "profile.html";
-		} else { //force login
-			ID("login").unhide();
+		} else {
+			window.location = "login.html";
 		}
 	}
 
-	function login () {
-		
+	function attemptlogin() {
+		var username = ID("username").value;
+		console.log("entered username = " + value);
+		var database = firebase.database();
+		firebase.database().ref('users/' + 1).set({
+			name : value
+		});
 	}
-
-// utilities=======================================================================================
+	
 	// returns an element of a given id
 	function ID(id) {
 		return document.getElementById(id);
-	}
-
-	// hides a data element
-	function hide(id) {
-		ID(id).style.display = "none";
-	}
-
-	// unhides an element
-	function unhide(id) {
-		ID(id).style.display = "block";
 	}
 
 })();
