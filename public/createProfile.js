@@ -3,7 +3,6 @@
 	// instructions to load the page
 	window.onload = function() {
 		initialize();
-		ID("")
 	};
 	
 	function initialize() {
@@ -52,8 +51,6 @@
 		}
 		//alert(value);
 		window.location = "index.html";
-		
-
 	}
 	
 	// returns an element of a given id
