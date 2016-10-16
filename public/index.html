@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Assemblr</title>
+		<link href="index.css" type="text/css" rel="stylesheet" />
+		<script src="index.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+		
+		<!--probably move this to it's own js file-->
+		<script>
+		  // Initialize Firebase
+		  var config = {
+		    apiKey: "AIzaSyBYY-2NRwIHT8KLGUz0NResAmBQH0o_J8U",
+		    authDomain: "hackathon2016-16636.firebaseapp.com",
+		    databaseURL: "https://hackathon2016-16636.firebaseio.com",
+		    storageBucket: "hackathon2016-16636.appspot.com",
+		    messagingSenderId: "521305151"
+		  };
+		  firebase.initializeApp(config);
+		</script>
+	</head>
+	<body class="cp-body">
+		<div id="topbar" class="menu cp-main">
+			<div id="home" class="block">
+				<span>Assemblr</span>
+			</div>
+			<div id="searchblock" class="block">
+				<input id="searchbar" type="text" hint="search" />
+				<input id="search" type="button" value="search"/>
+			</div>
+			<div id="create" class="block">
+				<span>Create Event</span>
+			</div>
+			<div id="profile" class="block">
+				<span>Profile</span>
+			</div>
+		</div>
+
+	</body>
+</html>
