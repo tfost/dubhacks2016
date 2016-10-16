@@ -48,8 +48,8 @@
 			//view profile
 			window.location = "viewProfile.html";
 		} else { //force login
-			unhide(ID("loginform"));
-			hide(ID("content"));
+			unhide("loginform");
+			hide("content");
 		}
 	}
 
