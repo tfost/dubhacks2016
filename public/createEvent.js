@@ -28,12 +28,14 @@
 		var time = ID("time").value;
 		var location = ID("location").value;
 		var desc = ID("description").value;
-		var tagList = {}
+		var tagList = [];
 		var tags = ID("tagList").getElementsByClassName("tag");
+		console.log(tags);
 		for(var i = 0; i < tags.length; i++) {
-			tagList.push(tags[i]);
+			tagList.push(tags[i].value);
 		}
-		if (title == "" || date == "" || time == "" || location == "" || desc == "" || tags.length < 1 || tags == undefined) {
+		console.log(tagList);
+		if (title == "" || date == "" || time == "" || location == "" || desc == "" || tagList.length < 1 || tagList == undefined) {
 			alert("Please make sure all fields are filled out!");
 		} else {
 			var database = firebase.database();
@@ -51,6 +53,7 @@
 		console.log("Event time: " + time);
 		console.log("Event Location:" + location);
 		console.log("Event Description: " + desc);
+		console.log("Event Tags: " + tagList);
 		console.log("finished writing value");
 
 	}
@@ -59,7 +62,7 @@
 		var tag = document.createElement("input");
 		//tagNumber++;
 		//tag.id = "tag" + tagNumber.toString();
-		tag.class = "tag";
+		tag.className = "tag";
 		tag.placeholder = "e.g. Music, Sports, etc.";
 		tag.size = "60";
 		ID("tagList").appendChild(tag);
